@@ -1,0 +1,59 @@
+﻿@using Apprenticeship.DTO
+@using Apprenticeship.Data.Entities
+@model AssignmentObjectives
+<link rel="stylesheet" type="text/css" href="~/css/form.css" />
+<div class="bigContainer">
+    <div class="container-fluid mt-2">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <div class="card myContainer">
+                    <div class="card-body">
+                        <h2 style="text-align:center">Edit Assignment Objectives</h2>
+                        <form method="post" action="/AssignmentObjective/Edited?objectiveId=@Model.objectiveId&AssignmentId=@Model.assignmentId" class="mt-5">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group mb-4">
+                                <label class="mr-sm-2" asp-for="assignmentId">Select Assignment</label>
+                                <select asp-for="assignmentId" aria-required="true" class="custom-select my-input" multiple>
+                                    @foreach (var assignment in (List<Assignment>)(ViewBag.Assignments))
+                                    {
+                                        if (@assignment.assignmentId == @Model.assignmentId)
+                                        {
+                                            <option selected value="@assignment.assignmentId">@assignment.training.studentId</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@assignment.assignmentId">@assignment.training.studentId</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="assignmentId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="mr-sm-2" asp-for="objectiveId">Select Objectives</label>
+                                <select asp-for="objectiveId" aria-required="true" class="custom-select my-input" multiple>
+                                    @foreach (var objective in (List<Objective>)(ViewBag.objectives))
+                                    {
+                                        if (@objective.objectiveId == @Model.objectiveId)
+                                        {
+                                            <option selected value="@objective.objectiveId">@objective.objectiveName</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@objective.objectiveId">@objective.objectiveName</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="objectiveId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-4">
+                                <button id="registerSubmit" type="submit" class="btn waves-effect waves-light btn-lg btn-rounded myBtn" style="width:100%">
+                                    Edit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

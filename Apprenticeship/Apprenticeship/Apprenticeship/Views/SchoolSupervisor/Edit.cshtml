@@ -1,0 +1,126 @@
+﻿@using Apprenticeship.DTO
+@using Apprenticeship.Data.Entities
+@model SchoolSupervisorDTO
+<link rel="stylesheet" type="text/css" href="~/css/form.css" />
+<div class="bigContainer">
+    <div class="container-fluid mt-2">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <div class="card myContainer">
+                    <div class="card-body">
+                        <h2 style="text-align:center">Edit School Supervisor.</h2>
+                        <form method="post" action="/SchoolSupervisor/Edited?Id=@Model.Id" class="mt-5">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="fristName">First Name</label>
+                                <input asp-for="fristName" class="form-control my-input" aria-required="true" value="@Model.fristName" />
+                                <span asp-validation-for="fristName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="secondName">Second Name</label>
+                                <input asp-for="secondName" class="form-control my-input" aria-required="true" value="@Model.secondName" />
+                                <span asp-validation-for="secondName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="thirdName">Third Name</label>
+                                <input asp-for="thirdName" class="form-control my-input" aria-required="true" value="@Model.thirdName" />
+                                <span asp-validation-for="thirdName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="lastName">Last Name</label>
+                                <input asp-for="lastName" class="form-control my-input" aria-required="true" value="@Model.lastName" />
+                                <span asp-validation-for="lastName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PhoneNumber">Phone Number</label>
+                                <input asp-for="PhoneNumber" class="form-control my-input" aria-required="true" value="@Model.PhoneNumber" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Email">Email</label>
+                                <input asp-for="Email" class="form-control my-input" aria-required="true" value="@Model.Email" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="mr-sm-2" asp-for="schoolId">Select Company</label>
+                                <select asp-for="schoolId" aria-required="true" class="custom-select my-input">
+                                    @foreach (var school in (List<School>)(ViewBag.schools))
+                                    {
+                                        if (@school.schoolId == @Model.schoolId)
+                                        {
+                                            <option selected value="@school.schoolId">@school.schoolName</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@school.schoolId">@school.schoolName</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="schoolId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-4">
+                                <button id="registerSubmit" type="submit" class="btn waves-effect waves-light btn-lg btn-rounded myBtn" style="width:100%">
+                                    Edit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@* <a class="btn btn-outline-secondary mb-4" asp-controller="SchoolSupervisor" asp-action="Index">Go Back</a>
+
+<div class="col-md-4">
+    <form method="post" action="/SchoolSupervisor/Edited?Id=@Model.Id">
+        <h2>Edit SchoolSupervisor.</h2>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-floating">
+            <input asp-for="fristName" class="form-control" aria-required="true" value="@Model.fristName" />
+            <label asp-for="fristName"></label>
+            <span asp-validation-for="fristName" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <input asp-for="secondName" class="form-control" aria-required="true" value="@Model.secondName" />
+            <label asp-for="secondName"></label>
+            <span asp-validation-for="secondName" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <input asp-for="thirdName" class="form-control" aria-required="true" value="@Model.thirdName" />
+            <label asp-for="thirdName"></label>
+            <span asp-validation-for="thirdName" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <input asp-for="lastName" class="form-control" aria-required="true" value="@Model.lastName" />
+            <label asp-for="lastName"></label>
+            <span asp-validation-for="lastName" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <input asp-for="PhoneNumber" class="form-control" aria-required="true" value="@Model.PhoneNumber" />
+            <label asp-for="PhoneNumber"></label>
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <select asp-for="schoolId" class="form-control" aria-required="true">
+                <option>School</option>
+                @foreach (var school in (List<School>)(ViewBag.schools))
+                {
+                    if (@school.schoolId == @Model.schoolId)
+                    {
+                        <option selected value="@school.schoolId">@school.schoolName</option>
+                    }
+                    else{
+                        <option value="@school.schoolId">@school.schoolName</option>
+                    }
+                }
+            </select>
+            <span asp-validation-for="schoolId" class="text-danger"></span>
+        </div>
+        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Edit SchoolSupervisor</button>
+    </form>
+</div> *@

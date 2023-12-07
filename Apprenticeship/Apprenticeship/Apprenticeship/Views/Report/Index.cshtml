@@ -1,0 +1,74 @@
+﻿@using Apprenticeship.Data.Entities
+@model int
+<link href="~/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="~/css/form.css" />
+<div class="col-12">
+	<div class="card">
+		<div class="card-body">
+			
+			<div class="table-responsive">
+				<div class="rowDispaly">
+					<h4 class="card-title">Reports Information</h4>
+				</div>
+				<table id="zero_config" class="table table-striped table-bordered no-wrap">
+					<thead>
+						<tr>
+							<th>Report Name</th>
+							<th>Report Description</th>
+							<th>Report Notes</th>
+							<th>Report Status</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var report in (List<Report>)(ViewBag.reports))
+						{
+							<tr>
+								<td>@report.assignment.trainingId</td>
+								<td>@report.assignmentId</td>
+								<td>@report.reportId</td>
+								<td>@report.reportName</td>
+								<td>@report.reportDescription</td>
+								<td>@report.reportNotes</td>
+								@if (@report.reportStatus.reportStatusName == "Pending")
+								{
+									<td style="background:#007bff">@report.reportStatus.reportStatusName</td>
+									<td><a class="btn btn-success" href="/Report/Edit?reportId=@report.reportId">Edit</a></td>
+									<td><a class="btn btn-danger" href="/Report/Delete?reportId=@report.reportId">Delete</a></td>
+								}
+								else if (@report.reportStatus.reportStatusName == "Rejected")
+								{
+									<td style="background:#dc3545">@report.reportStatus.reportStatusName</td>
+									<td><a class="btn btn-success" href="/Report/Edit?reportId=@report.reportId" style="pointer-events: none;">Edit</a></td>
+									<td><a class="btn btn-danger" href="/Report/Delete?reportId=@report.reportId">Delete</a></td>
+								}
+								else
+								{
+									<td style="background:#17a2b8">@report.reportStatus.reportStatusName</td>
+									<td><a class="btn btn-success" href="/Report/Edit?reportId=@report.reportId" style="pointer-events: none;">Edit</a></td>
+									<td><a class="btn btn-danger" href="/Report/Delete?reportId=@report.reportId" style="pointer-events: none;">Delete</a></td>
+								}
+
+							</tr>
+						}
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Report Name</th>
+							<th>Report Description</th>
+							<th>Report Notes</th>
+							<th>Report Status</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/dist/js/app-style-switcher.js"></script>
+<script src="~/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/dist/js/pages/datatable/datatable-basic.init.js"></script>

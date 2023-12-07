@@ -1,0 +1,79 @@
+﻿@using Apprenticeship.DTO
+@using Apprenticeship.Data.Entities
+@model AssignmentDTO
+
+<link rel="stylesheet" type="text/css" href="~/css/form.css" />
+<div class="bigContainer">
+    <div class="container-fluid mt-2">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <div class="card myContainer">
+                    <div class="card-body">
+
+                        <h2 style="text-align:center">Add Assignment.</h2>
+                        <form method="post" action="/Assignment/Insert?trainingId=@Model.trainingId&" enctype="multipart/form-data" class="mt-5">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="assignmentTitle">Assignment Title</label>
+                                <input asp-for="assignmentTitle" aria-required="true" class="form-control my-input">
+                                <span asp-validation-for="assignmentTitle" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="assignmentDescription">Assignment Description</label>
+                                <input asp-for="assignmentDescription" aria-required="true" class="form-control my-input">
+                                <span asp-validation-for="assignmentDescription" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="assignmentNotes">Assignment Notes</label>
+                                <input asp-for="assignmentNotes" aria-required="true" class="form-control my-input">
+                                <span asp-validation-for="assignmentNotes" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="startDate">Choose Start Date</label>
+                                @{
+                                    DateTime defaultStartDate = DateTime.Now.AddMinutes(5);
+                                    string defaultStartDateString = defaultStartDate.ToString("yyyy-MM-ddTHH:mm");
+                                }
+                                <input asp-for="startDate" aria-required="true" type="datetime-local" class="form-control my-input" value="@defaultStartDateString">
+                                <span asp-validation-for="startDate" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                @{
+                                    DateTime currentDate = DateTime.Now;
+                                    DateTime nextDay = currentDate.AddDays(30);
+                                }
+                                <label asp-for="endDate">Choose End Date</label>
+                                <input asp-for="endDate" aria-required="true" type="datetime-local" class="form-control my-input" value="@nextDay.ToString("yyyy-MM-ddTHH:mm")">
+                                <span asp-validation-for="endDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="mr-sm-2" asp-for="objectiveIds">Select Objectives for Assignment</label>
+                                <select asp-for="objectiveIds" aria-required="true" class="custom-select my-input" multiple>
+                                    @foreach (var objective in (List<TrainingObjectives>)(ViewBag.objectives))
+                                    {
+                                        <option value="@objective.objectiveId">@objective.objective.objectiveName</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="objectiveIds" class="text-danger"></span>
+                            </div>
+                            <div class="form-group ">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input my-input" name="formFile">
+                                    <label class="custom-file-label" for="formFile">Upload file</label>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <button id="registerSubmit" type="submit" class="btn waves-effect waves-light btn-lg btn-rounded myBtn" style="width:100%">
+                                    Add
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

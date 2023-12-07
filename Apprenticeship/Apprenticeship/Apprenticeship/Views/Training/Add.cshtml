@@ -1,0 +1,94 @@
+﻿@using Apprenticeship.DTO
+@using Apprenticeship.Data.Entities
+@model TrainingDTO
+<link rel="stylesheet" type="text/css" href="~/css/form.css" />
+<div class="bigContainer">
+    <div class="container-fluid mt-2">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <div class="card myContainer">
+                    <div class="card-body">
+
+                <h2 style="text-align:center">Create a new Training.</h2>
+                <form method="post" action="/Training/Insert" class="mt-5">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group mb-4">
+                        <label class="mr-sm-2" asp-for="studentId">Select Student</label>
+                        <select asp-for="studentId" aria-required="true" class="custom-select my-input">
+                            <option selected>Choose...</option>
+                            @foreach (var student in (List<Student>)(ViewBag.students))
+                            {
+                                <option value="@student.Id">@student.fristName @student.lastName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="studentId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="mr-sm-2" asp-for="schoolSupervisorId">Select School Supervisor</label>
+                        <select asp-for="schoolSupervisorId" aria-required="true" class="custom-select my-input">
+                            <option selected>Choose...</option>
+                            @foreach (var schoolSupervisor in (List<SchoolSupervisor>)(ViewBag.schoolSupervisors))
+                            {
+                                <option value="@schoolSupervisor.Id">@schoolSupervisor.fristName @schoolSupervisor.lastName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="schoolSupervisorId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="mr-sm-2" asp-for="teamLeaderId">Select Team Leader</label>
+                        <select asp-for="teamLeaderId" aria-required="true" class="custom-select my-input">
+                            <option selected>Choose...</option>
+                            @foreach (var teamLeader in (List<TeamLeader>)(ViewBag.teamLeaders))
+                            {
+                                <option value="@teamLeader.Id">@teamLeader.fristName @teamLeader.lastName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="teamLeaderId" class="text-danger"></span>
+                    </div>
+
+                            <div class="form-group">
+                                <label for="startDate">Choose Start Date</label>
+                                @{
+                                    DateTime defaultStartDate = DateTime.Now.AddMinutes(5);
+                                    string defaultStartDateString = defaultStartDate.ToString("yyyy-MM-ddTHH:mm");
+                                }
+                                <input asp-for="startDate" aria-required="true" type="datetime-local" class="form-control my-input" value="@defaultStartDateString">
+                                <span asp-validation-for="startDate" class="text-danger"></span>
+                            </div>
+
+                    <div class="form-group">
+                        @{
+                            DateTime currentDate = DateTime.Now;
+                            DateTime nextDay = currentDate.AddDays(30);
+                        }
+                        <label for="endDate">Choose End Date</label>
+                        <input asp-for="endDate" aria-required="true" type="datetime-local" class="form-control my-input" value="@nextDay.ToString("yyyy-MM-ddTHH:mm")">
+                        <span asp-validation-for="endDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="mr-sm-2" asp-for="objectiveIds">Select Objectives</label>
+                        <select asp-for="objectiveIds" aria-required="true" class="custom-select my-input" multiple>
+                            @foreach (var objective in (List<Objective>)(ViewBag.objectives))
+                            {
+                                <option value="@objective.objectiveId">@objective.objectiveName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="objectiveIds" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-4">
+                                <button id="registerSubmit" type="submit" class="btn waves-effect waves-light btn-lg btn-rounded myBtn" style="width:100%">
+                            Create Training
+                        </button>
+                    </div>
+                </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

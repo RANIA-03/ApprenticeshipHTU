@@ -1,0 +1,46 @@
+﻿@using Apprenticeship.Data.Entities
+<link href="~/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="~/css/form.css" />
+<div class="col-12">
+	<div class="card">
+		<div class="card-body">
+
+			<div class="table-responsive">
+				<div class="rowDispaly">
+					<h4 class="card-title">Report Statuses Information</h4>
+					<h4><a class="btn waves-effect waves-light btn-lg btn-rounded myBtn" asp-controller="ReportStatus" asp-action="Add">Add Report Status</a></h4>
+				</div>
+				<table id="zero_config" class="table table-striped table-bordered no-wrap">
+					<thead>
+						<tr>
+							<th>Report Status Name</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var reportStatus in (List<ReportStatus>)(ViewBag.reportStatuses))
+						{
+							<tr>
+								<td>@reportStatus.reportStatusName</td>
+								<td><a class="btn btn-success" href="/ReportStatus/Edit?reportStatusId=@reportStatus.reportStatusId">Edit</a></td>
+								<td><a class="btn btn-danger" href="/ReportStatus/Delete?reportStatusId=@reportStatus.reportStatusId">Delete</a></td>
+							</tr>
+						}
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Report Status Name</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/dist/js/app-style-switcher.js"></script>
+<script src="~/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/dist/js/pages/datatable/datatable-basic.init.js"></script>

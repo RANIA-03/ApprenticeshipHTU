@@ -1,0 +1,24 @@
+﻿@using Apprenticeship.Data.Entities
+<a class="btn btn-dark " asp-controller="trainingObjectives" asp-action="Add">Add trainingObjectives</a>
+<br />
+<br />
+<table class="table table-striped table-bordered">
+	<caption>trainingObjectivess Information</caption>
+	<tr>
+
+		<th>Training Id</th>
+		<th>Objective Id</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+	@foreach (var trainingObjective in (List<TrainingObjectives>)(ViewBag.trainingObjectives))
+	{
+		<tr>
+			<td>@trainingObjective.trainingId</td>
+			<td>@trainingObjective.objectiveId</td>
+
+			<td><a class="btn btn-success" href="/trainingObjectives/Edit?objectiveId=@trainingObjective.objectiveId&trainingId=@trainingObjective.trainingId">Edit</a></td>
+			<td><a class="btn btn-danger" href="/trainingObjectives/Delete?objectiveId=@trainingObjective.objectiveId&trainingId=@trainingObjective.trainingId">Delete</a></td>
+		</tr>
+	}
+</table>

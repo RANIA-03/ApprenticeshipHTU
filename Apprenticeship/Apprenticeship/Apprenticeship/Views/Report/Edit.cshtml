@@ -1,0 +1,103 @@
+﻿@using Apprenticeship.DTO
+@using Apprenticeship.Data.Entities
+@model ReportDTO
+@{
+    var trainingId = (int)ViewBag.trainingId;
+}
+<link rel="stylesheet" type="text/css" href="~/css/form.css" />
+<div class="bigContainer">
+    <div class="container-fluid mt-2">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <div class="card myContainer">
+                    <div class="card-body">
+
+                        <h2 style="text-align:center">Edit Report.</h2>
+                        <form method="post" action="/Report/Edited?reportId=@Model.reportId&assignmentId=@Model.assignmentId&reportStatusId=@Model.reportStatusId&trainingId=@trainingId" enctype="multipart/form-data" class="mt-5">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="reportName">Report Name</label>
+                                <input asp-for="reportName" aria-required="true" class="form-control my-input" value="@Model.reportName">
+                                <span asp-validation-for="reportName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="reportDescription">Report Description</label>
+                                <input asp-for="reportDescription" aria-required="true" class="form-control my-input" value="@Model.reportDescription">
+                                <span asp-validation-for="reportDescription" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="reportNotes">Report Notes</label>
+                                <input asp-for="reportNotes" aria-required="true" class="form-control my-input" value="@Model.reportNotes">
+                                <span asp-validation-for="reportNotes" class="text-danger"></span>
+                            </div>
+                            <div class="form-group ">
+                                @foreach (var d in (List<Document>)(ViewBag.documents))
+                                {
+                                    <br />
+                                    <a href="/Assignment/GetFile?documentId=@d.documentId" target="_blank">@d.name</a>
+                                    <a href="/Report/DeleteDocument?documentId=@d.documentId&reportId=@Model.reportId">Delete</a>
+                                    <br />
+                                }
+                                @if (((List<Document>)ViewBag.documents).Count == 0)
+                                {
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input my-input" name="formFile">
+                                        <label class="custom-file-label" for="formFile">Upload file</label>
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-group mb-4">
+                                <button id="registerSubmit" type="submit" class="btn waves-effect waves-light btn-lg btn-rounded myBtn" style="width:100%">
+                                    Edit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* 
+<div class="col-md-4">
+    <form method="post" action="/Report/Edited?reportId=@Model.reportId&assignmentId=@Model.assignmentId&reportStatusId=@Model.reportStatusId" enctype="multipart/form-data">
+        <h2>Edit Report.</h2>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-floating">
+            <input asp-for="reportName" class="form-control" aria-required="true" value="@Model.reportName"/>
+            <label asp-for="reportName"></label>
+            <span asp-validation-for="reportName" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <input asp-for="reportDescription" class="form-control" aria-required="true" value="@Model.reportDescription" />
+            <label asp-for="reportDescription"></label>
+            <span asp-validation-for="reportDescription" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <input asp-for="reportNotes" class="form-control" aria-required="true" value="@Model.reportNotes" />
+            <label asp-for="reportNotes"></label>
+            <span asp-validation-for="reportNotes" class="text-danger"></span>
+        </div>
+        <div>
+            @foreach (var d in (List<Document>)(ViewBag.documents))
+            {
+                <br />
+                <a href="/Assignment/GetFile?documentId=@d.documentId" target="_blank">@d.name</a>
+                <a href="/Report/DeleteDocument?documentId=@d.documentId&reportId=@Model.reportId">Delete</a>
+                <br />
+            }
+        </div>
+         @if (((List<Document>)ViewBag.documents).Count == 0)
+         {
+                <br />
+                <label for="document">Upload Attachment</label>
+                <div class="form-floating">
+                    <input type="file" name="formFile"  />
+                </div>
+                <br />
+         }
+         <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Edit Assignment</button>
+    </form>
+</div> *@

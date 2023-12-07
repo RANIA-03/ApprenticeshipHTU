@@ -1,0 +1,36 @@
+﻿@using Apprenticeship.DTO
+@using Apprenticeship.Data.Entities
+@model CompanyDTO
+<link rel="stylesheet" type="text/css" href="~/css/form.css" />
+<div class="bigContainer">
+    <div class="container-fluid mt-2">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <div class="card myContainer">
+                    <div class="card-body">
+                        <h2 style="text-align:center">Edit Company</h2>
+                        <form method="post" action="/Company/Edited?companyId=@Model.companyId" class="mt-5">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="companyName">Company Name</label>
+                                <input asp-for="companyName" aria-required="true" class="form-control my-input" value="@Model.companyName">
+                                <span asp-validation-for="companyName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="companyAddress">Company Address</label>
+                                <input asp-for="companyAddress" aria-required="true" class="form-control my-input" value="@Model.companyAddress">
+                                <span asp-validation-for="companyAddress" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-4">
+                                <button id="registerSubmit" type="submit" class="btn waves-effect waves-light btn-lg btn-rounded myBtn" style="width:100%">
+                                    Edit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

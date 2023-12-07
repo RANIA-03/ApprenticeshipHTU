@@ -1,0 +1,50 @@
+﻿@using Apprenticeship.DTO
+@using Apprenticeship.Data.Entities
+ @model ReportDTO
+@{
+    var trainingId = (int)ViewBag.trainingId;
+}
+<link rel="stylesheet" type="text/css" href="~/css/form.css" />
+<div class="bigContainer">
+    <div class="container-fluid mt-2">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <div class="card myContainer">
+                    <div class="card-body">
+
+                        <h2 style="text-align:center">Add Report.</h2>
+                        <form method="post" action="/Report/Insert?assignmentId=@Model.assignmentId&trainingId=@trainingId" enctype="multipart/form-data" class="mt-5">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="reportName">Report Name</label>
+                                <input asp-for="reportName" aria-required="true" class="form-control my-input">
+                                <span asp-validation-for="reportName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="reportDescription">Report Description</label>
+                                <input asp-for="reportDescription" aria-required="true" class="form-control my-input">
+                                <span asp-validation-for="reportDescription" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="reportNotes">Report Notes</label>
+                                <input asp-for="reportNotes" aria-required="true" class="form-control my-input">
+                                <span asp-validation-for="reportNotes" class="text-danger"></span>
+                            </div>
+                            <div class="form-group ">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input my-input" name="formFile">
+                                    <label class="custom-file-label" for="formFile">Upload file</label>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <button id="registerSubmit" type="submit" class="btn waves-effect waves-light btn-lg btn-rounded myBtn" style="width:100%">
+                                    Add
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

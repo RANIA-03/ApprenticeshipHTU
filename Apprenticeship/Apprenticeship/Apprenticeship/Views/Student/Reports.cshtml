@@ -1,0 +1,208 @@
+﻿@using Apprenticeship.Data.Entities
+@model int
+<link href="~/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="~/css/form.css" />
+@{
+	var trainingId = (int)ViewBag.trainingId;
+}
+<div class="col-12">
+	<div class="card">
+		<div class="card-body">
+
+			<div class="table-responsive">
+				<div class="rowDispaly">
+					<h4 class="card-title">Trainings Information</h4>
+					<h4>
+						@if ((bool)(ViewBag.cadAddReport) == true)
+						{
+							<a class="btn waves-effect waves-light btn-lg btn-rounded myBtn" href="/Report/Add?assignmentId=@Model&trainingId=@trainingId">Add Report</a>
+						}
+						else
+						{
+							<a class="btn waves-effect waves-light btn-lg btn-rounded myBtn">Deadline End</a>
+						}
+					</h4>
+
+				</div>
+				<table id="zero_config" class="table table-striped table-bordered no-wrap">
+					<thead>
+						<tr>
+							<th>Report Name</th>
+							<th>Report Description</th>
+							<th>Report Notes</th>
+							<th>Report Status</th>
+							<th>Report Document</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var report in (List<Report>)(ViewBag.reports))
+						{
+							<tr>
+								<td>@report.reportName</td>
+								@{
+									var descriptionWords = report.reportDescription.Split(' ');
+									var firstFiveWords = string.Join(" ", descriptionWords.Take(5));
+								}
+								<td>@firstFiveWords...</td>
+								@{
+									var descriptionWordsNotes = report.reportNotes.Split(' ');
+									var firstFiveWordsNotes = string.Join(" ", descriptionWords.Take(5));
+								}
+								<td>@firstFiveWordsNotes...</td>
+								@if (@report.reportStatus.reportStatusName == "Pending")
+								{
+									<td style="background:#007bff">@report.reportStatus.reportStatusName</td>
+									<td>
+										@if (((List<Document>)ViewBag.documents).Count > 0)
+										{
+											@foreach (var d in (List<Document>)(ViewBag.documents))
+											{
+												if (d.reportId == report.reportId)
+												{
+													<a href="/Assignment/GetFile?documentId=@d.documentId" target="_blank">@d.name</a>
+													break;
+												}
+											}
+										}
+
+									</td>
+									<td><a class="btn btn-success" href="/Report/Edit?reportId=@report.reportId&trainingId=@trainingId">Edit</a></td>
+									<td><a class="btn btn-danger" href="/Report/Delete?reportId=@report.reportId&assignmentId=@report.assignmentId&trainingId=@trainingId">Delete</a></td>
+								}
+								else if (@report.reportStatus.reportStatusName == "Rejected")
+								{
+									<td style="background:#dc3545">@report.reportStatus.reportStatusName</td>
+									<td>
+										@foreach (var d in (List<Document>)(ViewBag.documents))
+										{
+											if (d.reportId == report.reportId)
+											{
+												<a href="/Report/GetFile?documentId=@d.documentId" target="_blank">@d.name</a>
+												break;
+											}
+										}
+									</td>
+									<td><a class="btn btn-success" href="/Report/Edit?reportId=@report.reportId&trainingId=@trainingId" style="pointer-events: none;">Edit</a></td>
+									<td><a class="btn btn-danger" href="/Report/Delete?reportId=@report.reportId&assignmentId=@report.assignmentId&trainingId=@trainingId" style="pointer-events: none;">Delete</a></td>
+								}
+								else
+								{
+									<td style="background:#17a2b8">@report.reportStatus.reportStatusName</td>
+									<td>
+										@foreach (var d in (List<Document>)(ViewBag.documents))
+										{
+											if (d.reportId == report.reportId)
+											{
+												<a href="/Report/GetFile?documentId=@d.documentId" target="_blank">@d.name</a>
+											}
+										}
+									</td>
+									<td><a class="btn btn-success" href="/Report/Edit?reportId=@report.reportId&trainingId=@trainingId" style="pointer-events: none;">Edit</a></td>
+									<td><a class="btn btn-danger" href="/Report/Delete?reportId=@report.reportId&assignmentId=@report.assignmentId&trainingId=@trainingId" style="pointer-events: none;">Delete</a></td>
+								}
+
+							</tr>
+						}
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Report Name</th>
+							<th>Report Description</th>
+							<th>Report Notes</th>
+							<th>Report Status</th>
+							<th>Report Document</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/dist/js/app-style-switcher.js"></script>
+<script src="~/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/dist/js/pages/datatable/datatable-basic.init.js"></script>
+@* 
+<br />
+<table class="table table-striped table-bordered">
+	<caption>Reportss Information</caption>
+	<tr>
+		<th>Training Id</th>
+		<th>Assignment Id</th>
+		<th>Report Id</th>
+		<th>Report Name</th>
+		<th>Report Description</th>
+		<th>Report Notes</th>
+		<th>Report Status</th>
+		<th>Report Document</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+	@foreach (var report in (List<Report>)(ViewBag.reports))
+	{
+		<tr>
+			<td>@report.assignment.trainingId</td>
+			<td>@report.assignmentId</td>
+			<td>@report.reportId</td>
+			<td>@report.reportName</td>
+			<td>@report.reportDescription</td>
+			<td>@report.reportNotes</td>
+			@if (@report.reportStatus.reportStatusName == "Pending")
+			{
+				<td style="background:orange">@report.reportStatus.reportStatusName</td>
+				<td>
+					@if (((List<Document>)ViewBag.documents).Count > 0)
+					{
+						@foreach (var d in (List<Document>)(ViewBag.documents))
+						{
+							if (d.reportId == report.reportId)
+							{
+								<a href="/Assignment/GetFile?documentId=@d.documentId" target="_blank">@d.name</a>
+								break;
+							}
+						}
+					}
+					
+				</td>
+				<td><a class="btn btn-success" href="/Report/Edit?reportId=@report.reportId">Edit</a></td>
+				<td><a class="btn btn-danger" href="/Report/Delete?reportId=@report.reportId&assignmentId=@report.assignmentId">Delete</a></td>
+			}
+			else if (@report.reportStatus.reportStatusName == "Rejected")
+			{
+				<td style="background:red">@report.reportStatus.reportStatusName</td>
+				<td>
+					@foreach (var d in (List<Document>)(ViewBag.documents))
+					{
+						if (d.reportId == report.reportId)
+						{
+							<a href="/Report/GetFile?documentId=@d.documentId" target="_blank">@d.name</a>
+							break;
+						}
+					}
+				</td>
+				<td><a class="btn btn-success" href="/Report/Edit?reportId=@report.reportId" style="pointer-events: none;">Edit</a></td>
+				<td><a class="btn btn-danger" href="/Report/Delete?reportId=@report.reportId&assignmentId=@report.assignmentId" style="pointer-events: none;">Delete</a></td>
+			}
+			else
+			{
+				<td style="background:green">@report.reportStatus.reportStatusName</td>
+				<td>
+					@foreach (var d in (List<Document>)(ViewBag.documents))
+					{
+						if (d.reportId == report.reportId)
+						{
+							<a href="/Report/GetFile?documentId=@d.documentId" target="_blank">@d.name</a>
+						}
+					}
+				</td>
+				<td><a class="btn btn-success" href="/Report/Edit?reportId=@report.reportId" style="pointer-events: none;">Edit</a></td>
+				<td><a class="btn btn-danger" href="/Report/Delete?reportId=@report.reportId&assignmentId=@report.assignmentId" style="pointer-events: none;">Delete</a></td>
+			}
+
+		</tr>
+	}
+</table> *@

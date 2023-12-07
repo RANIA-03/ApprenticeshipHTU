@@ -1,0 +1,53 @@
+﻿@using Apprenticeship.Data.Entities
+<a class="btn btn-dark " asp-controller="School" asp-action="Add">Add School</a>
+<link href="~/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="~/css/form.css" />
+<div class="col-12">
+	<div class="card">
+		<div class="card-body">
+
+			<div class="table-responsive">
+				<div class="rowDispaly">
+					<h4 class="card-title">Schools Information</h4>
+					<h4><a class="btn waves-effect waves-light btn-lg btn-rounded myBtn" asp-controller="School" asp-action="Add">Add School</a></h4>
+				</div>
+				<table id="zero_config" class="table table-striped table-bordered no-wrap">
+					<thead>
+						<tr>
+							<th>School Name</th>
+							<th>School Address</th>
+							<th>School Short Name</th>
+							<th>Edit School</th>
+							<th>Delete School</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var school in (List<School>)(ViewBag.schools))
+						{
+							<tr>
+								<td>@school.schoolName</td>
+								<td>@school.schoolAddress</td>
+								<td>@school.shortName</td>
+								<td><a class="btn btn-success" href="/School/Edit?schoolId=@school.schoolId">Edit</a></td>
+								<td><a class="btn btn-danger" href="/School/Delete?schoolId=@school.schoolId">Delete</a></td>
+							</tr>
+						}
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>School Name</th>
+							<th>School Address</th>
+							<th>School Short Name</th>
+							<th>Edit School</th>
+							<th>Delete School</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/dist/js/app-style-switcher.js"></script>
+<script src="~/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/dist/js/pages/datatable/datatable-basic.init.js"></script>
