@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rania\\OneDrive\\Desktop\\Apprenticeship\\Apprenticeship\\Apprenticeship\\Apprenticeship.csproj": {}
+    "C:\\Users\\rania\\OneDrive\\Desktop\\FinalProjectHTU\\ApprenticeshipHTU\\Apprenticeship\\Apprenticeship\\Apprenticeship\\Apprenticeship.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rania\\OneDrive\\Desktop\\Apprenticeship\\Apprenticeship\\Apprenticeship\\Apprenticeship.csproj": {
+    "C:\\Users\\rania\\OneDrive\\Desktop\\FinalProjectHTU\\ApprenticeshipHTU\\Apprenticeship\\Apprenticeship\\Apprenticeship\\Apprenticeship.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rania\\OneDrive\\Desktop\\Apprenticeship\\Apprenticeship\\Apprenticeship\\Apprenticeship.csproj",
+        "projectUniqueName": "C:\\Users\\rania\\OneDrive\\Desktop\\FinalProjectHTU\\ApprenticeshipHTU\\Apprenticeship\\Apprenticeship\\Apprenticeship\\Apprenticeship.csproj",
         "projectName": "Apprenticeship",
-        "projectPath": "C:\\Users\\rania\\OneDrive\\Desktop\\Apprenticeship\\Apprenticeship\\Apprenticeship\\Apprenticeship.csproj",
+        "projectPath": "C:\\Users\\rania\\OneDrive\\Desktop\\FinalProjectHTU\\ApprenticeshipHTU\\Apprenticeship\\Apprenticeship\\Apprenticeship\\Apprenticeship.csproj",
         "packagesPath": "C:\\Users\\rania\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rania\\OneDrive\\Desktop\\Apprenticeship\\Apprenticeship\\Apprenticeship\\obj\\",
+        "outputPath": "C:\\Users\\rania\\OneDrive\\Desktop\\FinalProjectHTU\\ApprenticeshipHTU\\Apprenticeship\\Apprenticeship\\Apprenticeship\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rania\\AppData\\Roaming\\NuGet\\NuGet.Config",

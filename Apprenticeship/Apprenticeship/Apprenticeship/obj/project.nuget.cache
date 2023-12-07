@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DqJfgncCax5CNeO89qkRKvC2iZ1m3Eu1ey0euQd/tzKvtcqhyUbntdjhdcvBvTh0ZR82ExtSFpZ6kn1QphYYLA==",
+  "dgSpecHash": "0sMX0p3FG0T3aYNx0K8FhwMvq3P1UsBQhglwBJ30jdtQnECGgJo8d4rS9SePsCI5WraKVUhTvOkngyYjKlLuMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rania\\OneDrive\\Desktop\\Apprenticeship\\Apprenticeship\\Apprenticeship\\Apprenticeship.csproj",
+  "projectFilePath": "C:\\Users\\rania\\OneDrive\\Desktop\\FinalProjectHTU\\ApprenticeshipHTU\\Apprenticeship\\Apprenticeship\\Apprenticeship\\Apprenticeship.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rania\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\rania\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
