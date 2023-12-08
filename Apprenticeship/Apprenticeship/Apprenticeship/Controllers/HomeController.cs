@@ -80,10 +80,19 @@ namespace Apprenticeship.Controllers
         {
             return View();
         }
-        [Authorize(Roles = "ADMIN, TeamLeader, SchoolSupervisor, Student")]
+        [Authorize(Roles = "ADMIN, TEAMLEADER, SCHOOLSUPERVISOR, STUDENT")]
         public IActionResult Calendar()
         {
             return View();
+        }
+        [Authorize(Roles = "ADMIN, TEAMLEADER, SCHOOLSUPERVISOR, STUDENT")]
+        public IActionResult Profile()
+        {
+            var Id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = context.Users.Where(user => user.Id == Id).SingleOrDefault();
+            var role = context.Entry(user).Property("Discriminator").CurrentValue;
+            ViewBag.role = role;
+            return View(user);
         }
 
         public IActionResult Privacy()

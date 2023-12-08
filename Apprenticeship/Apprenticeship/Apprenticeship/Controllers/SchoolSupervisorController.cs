@@ -142,7 +142,7 @@ namespace Apprenticeship.Controllers
         [Authorize(Roles = "SCHOOLSUPERVISOR")]
         public IActionResult TimeLine(int assignmentId, int trainingId)
         {
-            ViewBag.reportsLog = reportsLogRepo.GetAllReportsLogs().OrderByDescending(r => r.logDate).ToList();
+            ViewBag.reportsLog = reportsLogRepo.GetAllReportsLogs().Where(rl => rl.report.assignmentId==assignmentId).OrderByDescending(r => r.logDate).ToList();
             Assignment assignment = assignmentRepo.GetAssignment(assignmentId, trainingId);
             return View(assignment);
         }

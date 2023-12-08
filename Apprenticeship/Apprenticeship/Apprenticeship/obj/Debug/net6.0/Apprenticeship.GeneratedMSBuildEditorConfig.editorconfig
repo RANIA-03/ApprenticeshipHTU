@@ -98,6 +98,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/rania/OneDrive/Desktop/FinalProjectHTU/ApprenticeshipHTU/Apprenticeship/Apprenticeship/Apprenticeship/Views/Home/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/rania/OneDrive/Desktop/FinalProjectHTU/ApprenticeshipHTU/Apprenticeship/Apprenticeship/Apprenticeship/Views/Objective/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JqZWN0aXZlXEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -288,10 +292,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/rania/OneDrive/Desktop/FinalProjectHTU/ApprenticeshipHTU/Apprenticeship/Apprenticeship/Apprenticeship/Views/Training/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhaW5pbmdcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/rania/OneDrive/Desktop/FinalProjectHTU/ApprenticeshipHTU/Apprenticeship/Apprenticeship/Apprenticeship/Views/Training/teamLeaderTrainings.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhaW5pbmdcdGVhbUxlYWRlclRyYWluaW5ncy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/rania/OneDrive/Desktop/FinalProjectHTU/ApprenticeshipHTU/Apprenticeship/Apprenticeship/Apprenticeship/Views/_ViewImports.cshtml]

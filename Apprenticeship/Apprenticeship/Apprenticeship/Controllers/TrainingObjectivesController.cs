@@ -47,6 +47,8 @@ namespace Apprenticeship.Controllers
 		public IActionResult Edit(TrainingObjectiveDTO trainingObjective)
 		{
 			var trainingObjective_ = trainingObjectivesRepo.GetTrainingObjective(trainingObjective.objectiveId, trainingObjective.trainingId);
+			ViewBag.trainings = trainingRepo.GetAllTrainings();
+			ViewBag.objectives = objectivesRepo.GetAllObjectives();
 			return View(trainingObjective_);
 		}
         //Edit TrainingObjectives Row in Database

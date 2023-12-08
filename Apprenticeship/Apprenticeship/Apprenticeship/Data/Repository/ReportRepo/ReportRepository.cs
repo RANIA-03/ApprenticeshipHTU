@@ -80,13 +80,13 @@ namespace Apprenticeship.Data.Repository.ReportRepo
 			reportLog.logDate = DateTime.Now;
 			var document = documentRepo.GetAllDocuments().Where(d => d.reportId == report.reportId).SingleOrDefault();
 			reportsLogRepo.AddReportLog(reportLog);
-			Document newDocument = new Document();
-            newDocument.reportsLogId = reportLog.reportLogId;
-            newDocument.reportId = report.reportId;
-            newDocument.name = document.name;
-            newDocument.contentType= document.contentType;
-            newDocument.file = document.file;
-            documentRepo.AddDocument(newDocument);
+			//Document newDocument = new Document();
+   //         newDocument.reportsLogId = reportLog.reportLogId;
+   //         newDocument.reportId = report.reportId;
+   //         newDocument.name = document.name == null ? "":document.name;
+   //         newDocument.contentType= document.contentType;
+   //         newDocument.file = document.file;
+   //         documentRepo.AddDocument(newDocument);
         }
 
         public List<Report> GetAllReports()

@@ -34,12 +34,12 @@ namespace Apprenticeship.Data.Repository.TrainingObjectivesRepo
 
         public List<TrainingObjectives> GetAllTrainingObjectives()
         {
-            return context.trainingObjectives.Include(tc => tc.objective).Include(tc=>tc.training).ToList();
+            return context.trainingObjectives.Include(tc => tc.objective).Include(tc=>tc.training).ThenInclude(s => s.student).ToList();
         }
 
         public TrainingObjectives GetTrainingObjective(int objectiveId, int trainingId)
         {
-            var trainingObjective_ = context.trainingObjectives.Where(tc => tc.objectiveId == objectiveId && tc.trainingId == trainingId).SingleOrDefault();
+            var trainingObjective_ = context.trainingObjectives.Include(t => t.objective).Include(t => t.training).ThenInclude(s => s.student).Where(tc => tc.objectiveId == objectiveId && tc.trainingId == trainingId).SingleOrDefault();
             return trainingObjective_;
         }
         public void RemoveTrainingObjectivesByTrainingId(int trainingId)
