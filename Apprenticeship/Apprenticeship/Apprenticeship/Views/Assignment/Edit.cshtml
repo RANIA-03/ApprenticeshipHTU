@@ -1,4 +1,4 @@
-﻿@using Apprenticeship.DTO
+﻿ @using Apprenticeship.DTO
 @using Apprenticeship.Data.Entities
 @model AssignmentDTO
 <link rel="shortcut icon" href="~/assets/images/favicon.ico" />
@@ -95,7 +95,7 @@
                         
                        
                         <button type="submit" class="btn btn-primary">Edit</button>
-                        <a href="/Assignment/Index" class="btn btn-danger">Cancel</a>
+                        <a href="/TeamLeader/Assignments?trainingId=@Model.trainingId" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>

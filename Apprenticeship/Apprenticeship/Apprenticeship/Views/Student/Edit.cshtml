@@ -1,9 +1,6 @@
 ﻿@using Apprenticeship.DTO
 @using Apprenticeship.Data.Entities
 @model StudentDTO
-@{
-    var trainingId = (int)ViewBag.trainingId;
-}
 <link rel="shortcut icon" href="~/assets/images/favicon.ico" />
 <link rel="stylesheet" href="~/assets/css/core/libs.min.css" />
 <link rel="stylesheet" href="~/assets/css/hope-ui.min.css?v=2.0.0" />
@@ -23,7 +20,7 @@
             <div class="card-body">
                 <div class="new-user-info">
                     <!-- ***************************************** -->
-                    <form method="post" action="/Student/Edited?Id=@Model.Id&trainingId=@trainingId" class="mt-5">
+                    <form method="post" action="/Student/Edited?Id=@Model.Id" class="mt-5">
                         <div class="form-group col-md-12">
                             <label class="form-label" asp-for="fristName">First Name:</label>
                             <input type="text" class="form-control" asp-for="fristName" placeholder=" " value="@Model.fristName">

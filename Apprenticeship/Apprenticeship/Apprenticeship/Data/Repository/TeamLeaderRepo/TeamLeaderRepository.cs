@@ -35,7 +35,11 @@ namespace Apprenticeship.Data.Repository.TeamLeaderRepo
 			teamLeaderInfo.lastName = teamLeader.lastName;
 			teamLeaderInfo.PhoneNumber = teamLeader.PhoneNumber;
 			teamLeaderInfo.companyId = teamLeader.companyId;
-			context.SaveChanges();
+            teamLeaderInfo.Email = teamLeader.Email;
+            teamLeaderInfo.NormalizedEmail = teamLeader.Email.ToUpper();
+            teamLeaderInfo.UserName = teamLeader.Email;
+            teamLeaderInfo.NormalizedUserName = teamLeader.Email.ToUpper();
+            context.SaveChanges();
 		}
 
 		public TeamLeader GetTeamLeader(string Id)

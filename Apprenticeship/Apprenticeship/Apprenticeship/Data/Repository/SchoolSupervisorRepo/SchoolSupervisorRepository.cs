@@ -34,10 +34,10 @@ namespace Apprenticeship.Data.Repository.SchoolSupervisorRepo
 			schoolSupervisorInfo.thirdName = schoolSupervisor.thirdName;
 			schoolSupervisorInfo.lastName = schoolSupervisor.lastName;
 			schoolSupervisorInfo.PhoneNumber = schoolSupervisor.PhoneNumber;
-			//schoolSupervisorInfo.Email = schoolSupervisor.Email;
-			//schoolSupervisorInfo.NormalizedEmail = schoolSupervisor.Email.ToUpper();
-			//schoolSupervisorInfo.UserName = schoolSupervisor.Email;
-			//schoolSupervisorInfo.NormalizedUserName = schoolSupervisor.Email.ToUpper();
+			schoolSupervisorInfo.Email = schoolSupervisor.Email;
+			schoolSupervisorInfo.NormalizedEmail = schoolSupervisor.Email.ToUpper();
+			schoolSupervisorInfo.UserName = schoolSupervisor.Email;
+			schoolSupervisorInfo.NormalizedUserName = schoolSupervisor.Email.ToUpper();
 			schoolSupervisorInfo.schoolId = schoolSupervisor.schoolId;
 			context.SaveChanges();
 		}

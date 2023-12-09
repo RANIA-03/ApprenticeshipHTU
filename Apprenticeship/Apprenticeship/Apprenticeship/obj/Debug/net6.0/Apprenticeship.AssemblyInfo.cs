@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Apprenticeship")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77fa5737002cc9f4e49e348f57b340d3e613b64d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Apprenticeship")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Apprenticeship")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

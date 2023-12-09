@@ -119,6 +119,10 @@ namespace Apprenticeship.Controllers
                 student_.thirdName = student.thirdName;
                 student_.lastName = student.lastName;
                 student_.schoolId = student.schoolId;
+                student_.Email = student.Email;
+                student_.NormalizedEmail = student.Email.ToUpper();
+                student_.UserName = student.Email;
+                student_.NormalizedUserName = student.Email.ToUpper();
                 student_.PhoneNumber = student.PhoneNumber;
                 student_.studentMajor = student.studentMajor;
                 student_.schoolId = student.schoolId;

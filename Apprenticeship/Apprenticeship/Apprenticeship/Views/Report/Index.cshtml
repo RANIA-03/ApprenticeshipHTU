@@ -33,12 +33,17 @@
 							@foreach (var report in (List<Report>)(ViewBag.reports))
 							{
 								<tr>
-									<td>@report.assignment.trainingId</td>
-									<td>@report.assignmentId</td>
-									<td>@report.reportId</td>
 									<td>@report.reportName</td>
-									<td>@report.reportDescription</td>
-									<td>@report.reportNotes</td>
+									@{
+										var descriptionWords = report.reportDescription.Split(' ');
+										var firstFiveWords = string.Join(" ", descriptionWords.Take(5));
+									}
+									<td>@firstFiveWords...</td>
+									@{
+										var descriptionWordsNotes = report.reportNotes.Split(' ');
+										var firstFiveWordsNotes = string.Join(" ", descriptionWords.Take(5));
+									}
+									<td>@firstFiveWordsNotes...</td>
 									@if (@report.reportStatus.reportStatusName == "Pending")
 									{
 										<td style="background:#007bff">@report.reportStatus.reportStatusName</td>

@@ -27,11 +27,11 @@ namespace Apprenticeship.Controllers
             this.teamLeaderRepo = teamLeaderRepo;
         }
         [Authorize(Roles = "ADMIN")]
-        public IActionResult Index(int assignmentId)
+        public IActionResult Index()
         {
-            var reports = reportRepo.GetAllReports().Where(t => t.assignmentId == assignmentId).ToList();
+            var reports = reportRepo.GetAllReports();
             ViewBag.reports = reports;
-            return View(assignmentId);
+            return View();
         }
         [Authorize(Roles = "STUDENT")]
         public IActionResult Add(int assignmentId,int trainingId)

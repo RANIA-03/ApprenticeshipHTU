@@ -114,6 +114,10 @@ namespace Apprenticeship.Controllers
                 teamLeader_.secondName = teamLeader.secondName;
                 teamLeader_.thirdName = teamLeader.thirdName;
                 teamLeader_.lastName = teamLeader.lastName;
+                teamLeader_.Email = teamLeader.Email;
+                teamLeader_.NormalizedEmail = teamLeader.Email.ToUpper();
+                teamLeader_.UserName = teamLeader.Email;
+                teamLeader_.NormalizedUserName = teamLeader.Email.ToUpper();
                 teamLeader_.PhoneNumber = teamLeader.PhoneNumber;
                 teamLeader_.companyId = teamLeader.companyId;
                 teamLeaderRepo.EditTeamLeader(teamLeader_);

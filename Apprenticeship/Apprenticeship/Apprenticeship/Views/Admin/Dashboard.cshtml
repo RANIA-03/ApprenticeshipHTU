@@ -152,10 +152,6 @@
                         document.addEventListener('DOMContentLoaded', function () {
                             var xValues = @Html.Raw(xValuesJson);
                             var yValues = @Html.Raw(yValuesJson);
-
-                            console.log(xValues);
-                            console.log(yValues);
-
                             var paletteColors = ["#007bff", "#dc3545", "#17a2b8", "#007bff", "#dc3545", "#17a2b8", "#007bff", "#dc3545", "#17a2b8", "#007bff", "#dc3545", "#17a2b8"];
 
                             new Chart("numOfStudentsInEachSchoolChart", {

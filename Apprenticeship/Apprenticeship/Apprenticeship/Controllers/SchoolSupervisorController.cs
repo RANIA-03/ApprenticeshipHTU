@@ -108,6 +108,10 @@ namespace Apprenticeship.Controllers
                 schoolSupervisor_.secondName = schoolSupervisor.secondName;
                 schoolSupervisor_.thirdName = schoolSupervisor.thirdName;
                 schoolSupervisor_.lastName = schoolSupervisor.lastName;
+                schoolSupervisor_.Email = schoolSupervisor.Email;
+                schoolSupervisor_.NormalizedEmail = schoolSupervisor.Email.ToUpper();
+                schoolSupervisor_.UserName = schoolSupervisor.Email;
+                schoolSupervisor_.NormalizedUserName = schoolSupervisor.Email.ToUpper();
                 schoolSupervisor_.PhoneNumber = schoolSupervisor.PhoneNumber;
                 schoolSupervisor_.schoolId = schoolSupervisor.schoolId;
                 schoolSupervisorRepo.EditSchoolSupervisor(schoolSupervisor_);
