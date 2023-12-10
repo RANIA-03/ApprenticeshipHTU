@@ -76,7 +76,8 @@ namespace Apprenticeship.Controllers
 
                 return RedirectToAction("Reports", "Student", new { assignmentId = report.assignmentId,trainingId=trainingId });
             }
-            return View("Add", report);
+			ViewBag.trainingId = trainingId;
+			return View("Add", report);
 		}
 		[Authorize(Roles = "ADMIN, TEAMLEADER, STUDENT, SCHOOLSUPERVISOR")]
 		public FileStreamResult GetFile(long documentId)

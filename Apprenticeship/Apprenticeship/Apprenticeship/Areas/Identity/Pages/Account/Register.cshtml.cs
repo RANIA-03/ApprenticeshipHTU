@@ -22,7 +22,8 @@ using Microsoft.Extensions.Logging;
 
 namespace Apprenticeship.Areas.Identity.Pages.Account
 {
-    public class RegisterModel : PageModel
+	[Authorize(Roles = "ADMIN")]
+	public class RegisterModel : PageModel
     {
         private readonly SignInManager<Person> _signInManager;
         private readonly UserManager<Person> _userManager;
